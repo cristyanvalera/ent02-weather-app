@@ -1,35 +1,41 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useEffect, useState } from 'react'
 import './App.css'
+import axios from 'axios';
 
 function App() {
-  const [count, setCount] = useState(0)
+    const [coords, setCoords] = useState();
+    const [weather, setWeather] = useState();
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    const success = position => {
+        const obj = {
+            lat: position.coords.latitude,
+            lon: position.coords.longitude,
+        };
+
+        setCoords(obj);
+    };
+
+    useEffect(() => {
+        if (coords) {
+            const API_KEY = '5c8a34f9dc23c58876756ce1bfef8337';
+
+            const url = `https://api.openweathermap.org/data/2.5/weather?lat=${coords.lat}&lon=${coords.lon}&appid=${API_KEY}`;
+
+            axios.get(url)
+                .then(res => setWeather(res.data))
+                .catch(err => console.log(err));
+        }
+    }, [coords])
+
+    useEffect(() => {
+        navigator.geolocation.getCurrentPosition(success);
+    }, []);
+
+    return (
+        <div>
+            <h1>Weather app</h1>
+        </div>
+    );
 }
 
 export default App

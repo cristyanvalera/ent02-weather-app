@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState } from 'react';
+import './styles/weather-card.css';
 
 export const WeatherCard = ({ weather, temp }) => {
     const [isCelsius, setisCelsius] = useState(true);
@@ -12,7 +13,7 @@ export const WeatherCard = ({ weather, temp }) => {
     const weatherUrl = `https://openweathermap.org/img/wn/${weatherIcon}@2x.png`;
 
     return (
-        <section>
+        <section className='weather'>
             <h1>Weather App</h1>
 
             <h1>{weather?.name}, {weather?.sys.country}</h1>

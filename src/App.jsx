@@ -20,7 +20,6 @@ function App() {
     useEffect(() => {
         if (coords) {
             const API_KEY = '5c8a34f9dc23c58876756ce1bfef8337';
-
             const url = `https://api.openweathermap.org/data/2.5/weather?lat=${coords.lat}&lon=${coords.lon}&appid=${API_KEY}`;
 
             axios.get(url)

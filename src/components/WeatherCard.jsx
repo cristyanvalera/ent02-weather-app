@@ -4,7 +4,7 @@ import './styles/weather-card.css';
 export const WeatherCard = ({ weather, temp }) => {
     const [isCelsius, setisCelsius] = useState(true);
 
-    const changeToAnotherUnit = () => {
+    const handleChange = () => {
         setisCelsius(!isCelsius);
     };
 
@@ -20,7 +20,7 @@ export const WeatherCard = ({ weather, temp }) => {
                 {weather?.name}, {weather?.sys.country}
             </h2>
 
-            <article className='weather-container'>
+            <article className='wather-container1'>
                 <figure className='weather-figure'>
                     <img
                         className='weather-img'
@@ -29,26 +29,28 @@ export const WeatherCard = ({ weather, temp }) => {
                     />
                 </figure>
 
-                <div className='weather'>
-                    <h3 className='weather-clouds'>{weather?.weather[0].description}</h3>
+                <div>
+                    <h3 className='weather-clouds'>
+                        {weather?.weather[0].description}
+                    </h3>
 
                     <ul className='weather-info'>
                         <li>
-                            <span>Wind Speed: {weather?.wind.speed} m/s</span>
+                            <span>Wind Speed: </span><span>{weather?.wind.speed} m/s</span>
                         </li>
                         <li>
-                            <span>Clouds: {weather?.clouds.all}%</span>
+                            <span>Clouds: </span><span>{weather?.clouds.all}%</span>
                         </li>
                         <li>
-                            <span>Humidity: {weather?.main.humidity}%</span>
+                            <span>Humidity: </span><span>{weather?.main.humidity}%</span>
                         </li>
                         <li>
-                            <span>Pressure: {weather?.main.pressure} hPa</span>
+                            <span>Pressure: </span><span>{weather?.main.pressure} hPa</span>
                         </li>
                     </ul>
 
                     <div className='weather-container2'>
-                        <h3 className='weather-temp'>
+                        <h3 className='wather-temp'>
                             {isCelsius
                                 ? temp?.celsius + ' °C'
                                 : temp?.fahrenheit + ' °F'
@@ -57,7 +59,7 @@ export const WeatherCard = ({ weather, temp }) => {
 
                         <button
                             className='weather-btn'
-                            onClick={changeToAnotherUnit}
+                            onClick={handleChange}
                         >
                             Change to {unit}
                         </button>

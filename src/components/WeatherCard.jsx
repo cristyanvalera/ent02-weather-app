@@ -9,7 +9,7 @@ export const WeatherCard = ({ weather, temp }) => {
 
     let unit = !isCelsius ? '°C' : '°F';
     let weatherIcon = weather?.weather[0]?.icon;
-    let weatherUrl = `https://openweathermap.org/img/wn/${weatherIcon}@2x.png`
+    let weatherUrl = `https://openweathermap.org/img/wn/${weatherIcon}@2x.png`;
 
     return (
         <section>

@@ -4,7 +4,7 @@ import './styles/weather-card.css';
 export const WeatherCard = ({ weather, temp }) => {
     const [isCelsius, setisCelsius] = useState(true);
 
-    const changeToFahrenheit = () => {
+    const changeToAnotherUnit = () => {
         setisCelsius(!isCelsius);
     };
 
@@ -14,19 +14,25 @@ export const WeatherCard = ({ weather, temp }) => {
 
     return (
         <section className='weather'>
-            <h1>Weather App</h1>
+            <h1 className='weather-title'>Weather App</h1>
 
-            <h1>{weather?.name}, {weather?.sys.country}</h1>
+            <h2 className='weather-city'>
+                {weather?.name}, {weather?.sys.country}
+            </h2>
 
-            <article>
-                <figure>
-                    <img src={weatherUrl} alt="weather" />
+            <article className='weather-container'>
+                <figure className='weather-figure'>
+                    <img
+                        className='weather-img'
+                        src={weatherUrl}
+                        alt="weather"
+                    />
                 </figure>
 
-                <div>
-                    <h3>{weather?.weather[0].description}</h3>
+                <div className='weather'>
+                    <h3 className='weather-clouds'>{weather?.weather[0].description}</h3>
 
-                    <ul>
+                    <ul className='weather-info'>
                         <li>
                             <span>Wind Speed: {weather?.wind.speed} m/s</span>
                         </li>
@@ -41,15 +47,18 @@ export const WeatherCard = ({ weather, temp }) => {
                         </li>
                     </ul>
 
-                    <div>
-                        <h3>
+                    <div className='weather-container2'>
+                        <h3 className='weather-temp'>
                             {isCelsius
                                 ? temp?.celsius + ' °C'
                                 : temp?.fahrenheit + ' °F'
                             }
                         </h3>
 
-                        <button onClick={changeToFahrenheit}>
+                        <button
+                            className='weather-btn'
+                            onClick={changeToAnotherUnit}
+                        >
                             Change to {unit}
                         </button>
                     </div>

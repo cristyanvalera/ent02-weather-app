@@ -1,5 +1,5 @@
 .weather {
-    background-color: #fff8;
+    background-color: #fffb;
     padding: 30px;
     border-radius: 30px;
     display: flex;
@@ -11,4 +11,24 @@
 .weather-title,
 .weather-city {
     font-size: 1.25rem;
+}
+
+.weather-clouds {
+    margin: 15px 0;
+}
+
+.weather-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.weather-info li {
+    margin: 5px 0;
+}
+
+.weather-btn {
+    background-color: #7e43ff;
+    color: white;
+    padding: 5px 15px;
+    cursor: pointer;
 }

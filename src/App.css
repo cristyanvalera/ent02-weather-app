@@ -13,7 +13,7 @@ html {
 
 body {
     background-color: black;
-    color: white;
+    color: #7e43ff;
 }
 
 img {
@@ -34,6 +34,9 @@ ul {
 }
 
 .app {
+    background-image: url('https://coalregioncanary.com/wp-content/uploads/2020/08/summer.gif');
+    background-size: cover;
+    background-position: center;
     min-height: 100vh;
     display: flex;
     justify-content: center;

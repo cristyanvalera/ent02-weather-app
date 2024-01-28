@@ -7,6 +7,7 @@ function App() {
     const [coords, setCoords] = useState();
     const [weather, setWeather] = useState();
     const [temp, setTemp] = useState();
+    const [isLoading, setIsLoading] = useState(true);
 
     const success = position => {
         const obj = {
@@ -33,7 +34,8 @@ function App() {
                     setTemp(obj);
                     setWeather(res.data);
                 })
-                .catch(err => console.log(err));
+                .catch(err => console.log(err))
+                .finally(() => setIsLoading(false));
         }
     }, [coords])
 
@@ -43,7 +45,13 @@ function App() {
 
     return (
         <div className='app'>
-            <WeatherCard weather={weather} temp={temp} />
+            {isLoading
+                ? <img src="https://i.gifer.com/ZKZg.gif" alt="loading" />
+                : <WeatherCard
+                    weather={weather}
+                    temp={temp}
+                />
+            }
         </div>
     );
 }

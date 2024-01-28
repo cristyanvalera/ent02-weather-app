@@ -12,6 +12,7 @@ function App() {
     const [isLoading, setIsLoading] = useState(true);
     const [inputSearch, setInputSearch] = useState('');
     const [finder, setFinder] = useState();
+    const [hasError, setHasError] = useState(false);
 
     const success = position => {
         const obj = {
@@ -39,9 +40,13 @@ function App() {
             axios.get(url)
                 .then(res => {
                     tempUnits(res);
+                    setHasError(false);
                     setWeather(res.data);
                 })
-                .catch(err => console.log(err))
+                .catch(err => {
+                    setHasError(true);
+                    console.log(err);
+                })
                 .finally(() => setIsLoading(false));
         }
     }, [coords])
@@ -57,9 +62,13 @@ function App() {
             axios.get(url)
                 .then(res => {
                     tempUnits(res);
+                    setHasError(false);
                     setFinder(res.data);
                 })
-                .catch(err => console.log(err));
+                .catch(err => {
+                    setHasError(true);
+                    console.log(err);
+                });
         }
     }, [inputSearch]);
 
@@ -75,11 +84,13 @@ function App() {
                         weather={finder}
                         temp={temp}
                         setInputSearch={setInputSearch}
+                        hasError={hasError}
                     />
                     : <WeatherCard
                         weather={weather}
                         temp={temp}
                         setInputSearch={setInputSearch}
+                        hasError={hasError}
                     />
             }
         </div>

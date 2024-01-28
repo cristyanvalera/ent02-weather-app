@@ -20,7 +20,7 @@ export const WeatherCard = ({ weather, temp }) => {
                 {weather?.name}, {weather?.sys.country}
             </h2>
 
-            <article className='wather-container1'>
+            <article className='weather-container1'>
                 <figure className='weather-figure'>
                     <img
                         className='weather-img'

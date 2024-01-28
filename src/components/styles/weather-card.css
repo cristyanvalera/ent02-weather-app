@@ -1,5 +1,5 @@
 .weather {
-    background-color: #fffb;
+    background-color: #bbbb;
     margin: 0 auto;
     padding: 1.5em;
     border-radius: 1em;
@@ -28,6 +28,30 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.weather-form {
+    display: flex;
+    gap: 5px;
+    padding: 1em;
+}
+
+.weather-form input {
+    text-align: center;
+    padding: 5px;
+}
+
+.form-btn {
+    background-color: white;
+    color: #7e43ff;
+    padding: 3px 6px;
+    border-radius: 5px;
+}
+
+.form-btn:hover {
+    transform: scale(1.1);
+    box-shadow: -2px 2px 5px black;
+    transition: transform .25s box-shadow .25s;
 }
 
 .weather-img {
@@ -80,6 +104,17 @@
     transform: scale(1.1);
     box-shadow: -2px 2px 5px black;
     transition: transform .25s box-shadow .25s;
+}
+
+.weather-error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1em;
+}
+
+.weather-error > h3 {
+    padding-top: 1em;
 }
 
 @media (width>=850px) {

@@ -27,7 +27,9 @@ export const WeatherCard = ({ weather, temp, setInputSearch, hasError }) => {
             <form className='weather-form' onSubmit={search}>
                 <input type="text" ref={city} />
 
-                <button>Search</button>
+                <button className='form-btn'>
+                    <strong>Search</strong>
+                </button>
             </form>
 
             {

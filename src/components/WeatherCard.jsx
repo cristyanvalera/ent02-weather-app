@@ -1,20 +1,34 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import './styles/weather-card.css';
 
-export const WeatherCard = ({ weather, temp }) => {
+export const WeatherCard = ({ weather, temp, setInputSearch }) => {
     const [isCelsius, setisCelsius] = useState(true);
-
-    const handleChange = () => {
-        setisCelsius(!isCelsius);
-    };
 
     let unit = !isCelsius ? '°C' : '°F';
     const weatherIcon = weather?.weather[0]?.icon;
     const weatherUrl = `https://openweathermap.org/img/wn/${weatherIcon}@2x.png`;
 
+    const handleChange = () => {
+        setisCelsius(!isCelsius);
+    };
+
+    const city = useRef();
+
+    const search = event => {
+        event.preventDefault();
+
+        setInputSearch(city.current.value.toLowerCase().trim());
+    };
+
     return (
         <section className='weather'>
             <h1 className='weather-title'>Weather App</h1>
+
+            <form className='weather-form' onSubmit={search}>
+                <input type="text" ref={city} />
+
+                <button>Search</button>
+            </form>
 
             <h2 className='weather-city'>
                 {weather?.name}, {weather?.sys.country}

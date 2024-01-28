@@ -27,6 +27,7 @@ button {
     display: inline-block;
     border: none;
     font-family: inherit;
+    cursor: pointer;
 }
 
 ul {
